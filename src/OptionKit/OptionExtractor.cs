@@ -38,7 +38,7 @@ namespace OptionKit {
 			var processedArgs = 0;
 			var state = State.JustStartedParsing;
 
-			while( state != State.Done ) {
+			while( state != State.Done && args.Any() ) {
 				var arg = args[processedArgs];
 
 				switch( state ) {
