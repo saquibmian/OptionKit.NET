@@ -20,7 +20,7 @@ namespace OptionKit.Mapping {
 
 		protected MappingBase() {
 			var programName = Path.GetFileName( Assembly.GetEntryAssembly().Location );
-			Usage = string.Format( "\nUsage: {0} [OPTIONS] args\n\n", programName );
+			Usage = string.Format( "\nUsage: {0} <operations> [options] <args>\n\n", programName );
 		}
 
 		internal object BuildModelFromOptions( Options extractedOptions ) {

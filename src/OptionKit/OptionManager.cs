@@ -8,7 +8,9 @@ using OptionKit.Mapping;
 namespace OptionKit {
 	public interface IOptionManager {
 
-		T Parse<T>( string[] args ) where T : new();
+        bool UseAttributeMappings { get; }
+
+        T Parse<T>( string[] args ) where T : new();
 
 		void AddMapping<T>( Mapping<T> mapping ) where T : new();
 

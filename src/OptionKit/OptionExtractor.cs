@@ -52,23 +52,25 @@ namespace OptionKit {
 						if( arg.IsOptionKey() ) {
 							throw new UnexpectedOptionException( arg );
 						}						
-						toReturn.Trailers.Add( arg );
+						toReturn.Arguments.Add( arg );
 						++processedArgs;
 						break;
 
 					case State.ParsingDisabled:
-						toReturn.Trailers.Add( arg );
+						toReturn.Arguments.Add( arg );
 						++processedArgs;
 						break;
 
 					case State.JustStartedParsing:
-						if( !arg.IsOptionKey() ) {
-							throw new UnexpectedOperationException( arg );
+						if( arg.IsOptionKey() ) {
+                            state = State.InTheMiddleOfParsing;
+                            break; 
 						}
-						state = State.InTheMiddleOfParsing;
-						break;
-					
-					case State.InTheMiddleOfParsing:
+                        toReturn.Operations.Add( arg );
+                        ++processedArgs;
+                        break;
+
+                    case State.InTheMiddleOfParsing:
 						if( arg.IsParsingDisableKey() ) {
 							state = State.ParsingDisabled;
 							++processedArgs;
