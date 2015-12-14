@@ -30,6 +30,14 @@ namespace OptionKit {
 		}
 		
 		public Options ExtractOptions( string[] args ) {
+			try {
+				return ExtractOptionsImpl( args );
+			} catch( Exception e ) {
+				throw new OptionKitException( e, "An error occured when parsing the command line." );
+			}
+		}
+
+		public Options ExtractOptionsImpl( string[] args ) {
 			var toReturn = new Options();
 			var parsedOptions = toReturn.ExtractedOptions;
 

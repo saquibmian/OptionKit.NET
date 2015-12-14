@@ -21,6 +21,7 @@ namespace OptionKit {
 		public Options() {
 			ExtractedOptions = new Dictionary<string, List<string>>();
             Arguments = new List<string>();
+            Operations = new List<string>();
 		}
 
 	}
