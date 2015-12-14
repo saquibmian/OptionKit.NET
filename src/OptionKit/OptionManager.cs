@@ -31,7 +31,12 @@ namespace OptionKit {
 		public T Parse<T>( string[] args ) where T : new() {
 			var mapping = GetMapping( typeof( T ) );
 			var options = m_parser.ExtractOptions( args );
-			return (T)mapping.BuildModelFromOptions( options );
+
+			try {
+				return (T)mapping.BuildModelFromOptions( options );
+			} catch( Exception e ) {
+				throw new OptionKitException( e, "An error occured when parsing the command line." );
+			}		
 		}
 
 		public string Usage<T>() {
