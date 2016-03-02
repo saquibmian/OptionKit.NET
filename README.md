@@ -52,7 +52,7 @@ would produce the result:
 
 Plain-old C# objects can also be mapped via attribute or via expression trees. Here is an example:
 
-```
+```csharp
 internal class CliModel {
 
 	[Option(
